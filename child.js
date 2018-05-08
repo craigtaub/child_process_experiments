@@ -40,6 +40,6 @@ process.on('SIGINT', () => {
 
 
 function invokeProcess() {
-  const args = [path.join(__dirname, '..', '..', 'delete', 'child_process', 'baby.js')];
+  const args = [path.join(__dirname, '..', '..', 'delete', 'child_process_experiments', 'baby.js')];
   return spawn(process.execPath, args);
 }

@@ -33,7 +33,7 @@ if (true) {
 
 
 function invokeProcess() {
-  const args = [path.join(__dirname, '..', '..', 'delete', 'child_process', 'child.js')];
+  const args = [path.join(__dirname, '..', '..', 'delete', 'child_process_experiments', 'child.js')];
   return spawn(process.execPath, args);
 }
 

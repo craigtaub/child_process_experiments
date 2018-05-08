@@ -1,7 +1,7 @@
 {
   "name": "child_process_experiments",
   "version": "1.0.0",
-  "description": "- spawning child (and sub) processes - blocking processes (stream + timers) - sending signals",
+  "description": "spawning child (and sub) processes - blocking processes (stream + timers) - sending signals",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
