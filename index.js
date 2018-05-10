@@ -29,11 +29,21 @@ if (true) {
     console.log('EXIT IN PARENT')
     process.exit();
   });
+  if (process.platform === 'win32') {
+    var rl = require('readline').createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+    rl.on('SIGINT', () => {
+      console.log('EXIT IN PARENT')
+      process.exit();
+    });
+  }
 }
 
 
 function invokeProcess() {
-  const args = [path.join(__dirname, '..', '..', 'delete', 'child_process_experiments', 'child.js')];
+  const args = [path.join(__dirname, '..', 'child_process_experiments', 'child.js')];
   return spawn(process.execPath, args);
 }
 

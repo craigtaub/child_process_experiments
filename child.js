@@ -26,6 +26,16 @@ process.on('SIGINT', () => {
   babyprocess.kill('SIGINT');
   // process.exit();
 });
+if (process.platform === 'win32') {
+  var rl = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  rl.on('SIGINT', () => {
+    console.log('SIGINT IN CHILD');
+    babyprocess.kill('SIGINT');
+  });
+}
 
 // always runs if nothing holding pipe open
 // process.on('exit', () => {
@@ -40,6 +50,6 @@ process.on('SIGINT', () => {
 
 
 function invokeProcess() {
-  const args = [path.join(__dirname, '..', '..', 'delete', 'child_process_experiments', 'baby.js')];
+  const args = [path.join(__dirname, '..', 'child_process_experiments', 'baby.js')];
   return spawn(process.execPath, args);
 }
