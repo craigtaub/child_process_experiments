@@ -4,6 +4,11 @@
 - blocking processes (stream + timers)
 - sending signals 
 
+## Branch - `parentChildProxy` test
+
+    node child.js
+
+
 ## Keeping process open:
 - pipes for stdin/stdout+stderr are established between the parent Node.js process and the spawned child
 - holding process/shell open:

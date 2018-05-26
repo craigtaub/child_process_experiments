@@ -2,9 +2,12 @@ const { spawn } = require('child_process');
 const path = require('path');
 
 // baby process
-console.log('CHILD invoked BABY');
+// console.log('CHILD invoked BABY');
 const babyprocess = invokeProcess();
+
 // block
+// process.stdout.on('data', function (data) { });
+
 babyprocess.stdout.on('data', function (data) {
   console.log('CHILD received: ' + data);
 });
@@ -24,18 +27,19 @@ console.log('CHILD setup signint');
 process.on('SIGINT', () => {
   console.log('SIGINT IN CHILD');
   babyprocess.kill('SIGINT');
-  // process.exit();
+  process.exit();
 });
-if (process.platform === 'win32') {
-  var rl = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-  rl.on('SIGINT', () => {
-    console.log('SIGINT IN CHILD');
-    babyprocess.kill('SIGINT');
-  });
-}
+// if (process.platform === 'win32') {
+//   var rl = require('readline').createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+//   });
+//   rl.on('SIGINT', () => {
+//     console.log('SIGINT IN CHILD');
+//     // babyprocess.kill('SIGINT');
+//     process.exit();
+//   });
+// }
 
 // always runs if nothing holding pipe open
 // process.on('exit', () => {
@@ -43,10 +47,10 @@ if (process.platform === 'win32') {
 // });
 
 // blocker
-// setTimeout(() => {
-//   console.log('CHILD BLOCKER TIMER');
-//   babyprocess.kill('SIGINT')
-// }, 2000);
+setTimeout(() => {
+  console.log('CHILD BLOCKER TIMER');
+  babyprocess.kill('SIGINT')
+}, 2000);
 
 
 function invokeProcess() {

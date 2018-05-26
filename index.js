@@ -53,6 +53,6 @@ function timer(subprocess) {
     // kill the child
     // WORKS: PARENT stdout.on('data) receives CHILD log message
     console.log('TIMER RAN');
-    subprocess.kill('SIGINT');
+    subprocess.kill('SIGINT'); // normall process.kill(pid, signal) BUT this is spawn
   }, 1000);
 }
