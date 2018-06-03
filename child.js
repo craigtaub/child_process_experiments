@@ -23,7 +23,7 @@ babyprocess.stdout.on('data', function (data) {
 
 // if receives KILL, print message
 // WORKS: in isolation 
-console.log('CHILD setup signint');
+console.log('CHILD setup signintt');
 process.on('SIGINT', () => {
   console.log('SIGINT IN CHILD');
   babyprocess.kill('SIGINT');
