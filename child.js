@@ -29,17 +29,17 @@ process.on('SIGINT', () => {
   babyprocess.kill('SIGINT');
   process.exit();
 });
-// if (process.platform === 'win32') {
-//   var rl = require('readline').createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-//   });
-//   rl.on('SIGINT', () => {
-//     console.log('SIGINT IN CHILD');
-//     babyprocess.emit('SIGINT');
-//     process.exit();
-//   });
-// }
+if (process.platform === 'win32') {
+  var rl = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  rl.on('SIGINT', () => {
+    console.log('readline SIGINT IN CHILD');
+    babyprocess.emit('SIGINT');
+    process.exit();
+  });
+}
 
 // always runs if nothing holding pipe open
 // process.on('exit', () => {

@@ -11,7 +11,7 @@ if (process.platform === 'win32') {
     output: process.stdout
   });
   rl.on('SIGINT', () => {
-    console.log('SIGINT IN BABY')
+    console.log('readline SIGINT IN BABY')
     process.emit('SIGINT');
     process.exit();
   });
